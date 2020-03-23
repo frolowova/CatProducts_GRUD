@@ -24,11 +24,12 @@
 
     <h1>Каталог</h1>
     <div v-if="products.length">
-      <div class="list">
+      <div class="list" v-if="list_page.length">
         <div v-for="product of list_page" :key="product.id">
           <product :production="product" />
         </div>
       </div>
+      <p v-else>Товар не найден</p>
       <pagination :totalPages="total_pages" />
     </div>
     <p v-else>Ни один товар пока не создан</p>
@@ -139,6 +140,10 @@ h1 {
   text-align: center;
   z-index: 1;
   transition-duration: 1s;
+}
+hr {
+  opacity: 0.3;
+  margin-top: 20px;
 }
 
 .filterL-enter-active,
